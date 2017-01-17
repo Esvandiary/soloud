@@ -25,11 +25,23 @@ end
 
 -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< --
 
-local sdl_root       = "/libraries/sdl"
-local sdl2_root      = "/libraries/sdl2"
+local dep_root = "/libraries"
+
+newoption {
+    trigger       = "dep-prefix",
+    description   = "Directory to find dependencies within"
+}
+
+if _OPTIONS["dep-prefix"] then
+    dep_root = _OPTIONS["dep-prefix"]
+end
+
+local sdl_root       = dep_root .. "/sdl"
+local sdl2_root      = dep_root .. "/sdl2"
+local portmidi_root  = dep_root .. "/portmidi"
 local dxsdk_root     = os.getenv("DXSDK_DIR") and os.getenv("DXSDK_DIR") or "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)"
-local portaudio_root = "/libraries/portaudio"
-local openal_root    = "/libraries/openal"
+local portaudio_root = dep_root .. "/portaudio"
+local openal_root    = dep_root .. "/openal"
 
 -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< --
 
